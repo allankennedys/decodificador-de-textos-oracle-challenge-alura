@@ -5,30 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decodificador de Textos - Oracle Challenge</title>
     <link href="style.css" rel="stylesheet">
+    <link href="img/safe-box.png" rel="icon">
+    
 </head>
 <body>
+    <dialog><p id="dialog">Texto copiado para a área de transferência!</p></dialog>
+
     <main>
         <section class="container_input_area">
-            <h1>Digite seu texto</h1>
+            <h1>Decodificador de Textos</h1>
             <textarea form="form" name="text_area" required placeholder="Digite aqui o texto a ser criptografado/descriptografado"></textarea>
             <div class="p">
             <img src="img/bi_exclamation-circle-fill.png" alt="ícone de exclamação" width="16px"  height="16px">
-            <p>Apenas letras minúsculas e sem acento.</p>
+            <p>Apenas letras minúsculas e sem acento são criptografadas.</p>
         </div>
         <div class="buttons_area">
-            <button id="button_cript" type="submit" form="form">Criptografar</button>
-            <button id="button_descript" type="submit" form="form">Descriptografar</button>
+            <button id="button_cript" type="submit" form="form" onclick="criptografarTexto()">Criptografar</button>
+            <button id="button_descript" type="submit" form="form" onclick="descriptografarTexto()">Descriptografar</button>
         </div>
         </section>
         <section class="container_display_area">
-            <img class="image_display" src="img/High quality products 1 1.png" alt="Arte de garoto olhando um diamante através de uma lupa">
+            <img class="erase_image" src="img/High quality products 1 1.png" alt="Arte de garoto olhando um diamante através de uma lupa">
             <div class="display_area_text">
-            <h2>Nenhuma mensagem encontrada</h2>
-            <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
+            <h2 class="erase_h2">Nenhuma mensagem encontrada</h2>
+            <p id="paragrafoDisplay">Digite um texto que você deseja criptografar ou descriptografar.</p>
             </div>
-            <button id="button_copy" type="button">Copiar</button>
+            <button id="button_copy" type="button" onclick="copy()">Copiar</button>
         </section>
     </main>
     
 </body>
+<footer>
+    <p>Desenvolvido por <a href="https://www.linkedin.com/in/allankennedys/">Allan Kennedy</a></p>
+</footer>
+
+<script src="script.js"></script>
 </html>
