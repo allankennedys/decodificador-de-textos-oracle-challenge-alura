@@ -1,44 +1,50 @@
 
-let textoDecodificado = '';
+let textoDecodificado = ''; // declaração da variavel onde ficará armazenado o texto que o usuário criptografar.
 
+//função abaixo permite que o botão "copiar" copie o texto no <p> de id #paragrafoDisplay
 function copy() {
-    let textoCopiado = document.querySelector('#paragrafoDisplay').textContent;
-    navigator.clipboard.writeText(textoCopiado);
-    const modal = document.querySelector('dialog');
+    let textoCopiado = document.querySelector('#paragrafoDisplay').textContent;//armazena o texto do paragrafo dentro da variavel textoCopiado.
+    navigator.clipboard.writeText(textoCopiado); // copia o texto armazenado na variavel p/ a área de transferência do usuário.
+    const modal = document.querySelector('dialog');// cria um modal utilizando a tag 'dialog' do html, para informar o usuário de que o texto foi copiado.
     
-    // Exibir o modal
-    modal.showModal();
+    modal.showModal(); //exibe o modal
     
-    // Esconder o modal após 1,5 segundos (1500 milissegundos)
+    // esconde o modal após 1,5 segundos (1500 milissegundos)
     setTimeout(function() {
         modal.close();
     }, 500);
 }
 
-
+//a função abaixo altera o <p>> da tela inicial para exibir o texto criptografado pelo usuário.
+//o parâmetro textoDisplay será informado posteriormente de acordo com a solicitação do user.
 function alterarP(textoDisplay) {
     let campo = document.querySelector('#paragrafoDisplay');
     campo.innerHTML = textoDisplay;
         
     }
 
+//a função abaixo faz com que a imagem da aba display deixe de ser exibida.
+//essa função será chamada sempre que o programa precisar exibir uma mensagem criptografada
+//ou descriptografada no display.
 function eraseImage() {
-    let ocultarImagem = document.getElementsByClassName("erase_image")[0];
+    let ocultarImagem = document.getElementsByClassName("erase_image")[0];//como estamos chamando o elemento pela classe, inserimos [0] para informar que se trata do primeiro elemente da classe.
     ocultarImagem.style.display = 'none';
-    let ocultarh2 = document.getElementsByClassName("erase_h2")[0];
+    let ocultarh2 = document.getElementsByClassName("erase_h2")[0];// além da imagem, ocultamos também um título do display inicial, para que tenhamos apenas <p> visível nessa aba.
     ocultarh2.style.display = 'none';
-    
 
 }
 
+//a função abaixo armazena o texto digitado pelo user no input dentro da variável textInput.
 function getText(){
     let textInput = document.querySelector('textarea').value;
     return textInput;}
 
+//a função abaixo decodifica o texto substituin as vogais do texto inserido no input 
+//por sílabas pré-definidas.
 function criptografarTexto(){
-    textoDecodificado = '';
+    textoDecodificado = ''; //inserimos a variavel vazia no inicio da função para que ela sempre esteja atualizada com o último texto inserido no input pelo user.
     const dicionarioCriptografia = {
-        'a':'asp','e':'ede','i':'imf','o':'ogh','u':'ukk'
+        'a':'asp','e':'ede','i':'imf','o':'ogh','u':'ukk' //aqui definimos as substituições que devem ocorrer nas vogais.
     };
     let texto = getText();
     for (let i = 0; i < texto.length; i++) {
@@ -58,6 +64,8 @@ function criptografarTexto(){
     
     
 }
+
+//a função abaixo inverte o processo da função anterior.
 function descriptografarTexto() {
     textoDecifrado = '';
     const dicionarioDescriptografia = {
